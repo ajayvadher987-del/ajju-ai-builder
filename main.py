@@ -1,5 +1,6 @@
 from fastapi import FastAPI
 from pydantic import BaseModel
+from ai_service import ask_ai
 
 app = FastAPI(title="Ajju AI Builder")
 
@@ -19,6 +20,8 @@ def home():
 
 @app.post("/chat")
 def chat(request: ChatRequest):
+    reply = ask_ai(request.message)
+
     return {
-        "reply": f"You said: {request.message}"
+        "reply": reply
     }
