@@ -1,6 +1,10 @@
 from fastapi import FastAPI
 from pydantic import BaseModel
+from dotenv import load_dotenv
+
 from ai_service import ask_ai
+
+load_dotenv()
 
 app = FastAPI(title="Ajju AI Builder")
 
