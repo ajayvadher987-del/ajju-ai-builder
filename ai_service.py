@@ -8,7 +8,7 @@ def ask_ai(message: str) -> str:
     if not api_key:
         return "AI API key is not configured."
 
-    model = os.getenv("AI_MODEL", "gemini-3.6-flash")
+    model = os.getenv("AI_MODEL", "gemini-3.8-flash")
 
     url = (
         "https://generativelanguage.googleapis.com/"
@@ -23,14 +23,10 @@ def ask_ai(message: str) -> str:
     data = {
         "contents": [
             {
+                "role": "user",
                 "parts": [
                     {
-                        "text": (
-                            "You are Ajju AI Builder, a professional AI "
-                            "assistant and coding agent. Give clear, useful "
-                            "and accurate answers.\n\n"
-                            f"User: {message}"
-                        )
+                        "text": message
                     }
                 ]
             }
